@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.proyectofinal.HelloController" spacing="10" alignment="CENTER">
+    <Label text="Gestión de Grafos Dirigidos" style="-fx-font-size: 18px;"/>
+
+    <!-- panel para agregar vértices y aristas -->
+    <HBox spacing="10">
+        <Button text="Agregar Vértice" onAction="#agregarVertice"/>
+        <Button text="Agregar Arista" onAction="#agregarArista"/>
+        <Button text="Crear Grafo Aleatorio" onAction="#crearGrafoAleatorio"/>
+    </HBox>
+
+    <!-- panel para mostrar información -->
+    <TabPane fx:id="tabPane">
+        <Tab text="Dibujo del Grafo">
+            <ScrollPane>
+                <Pane fx:id="canvasPane" prefWidth="600" prefHeight="600" style="-fx-background-color: #f0f0f0;"/>
+            </ScrollPane>
+        </Tab>
+        <Tab text="Matriz de Adyacencia">
+            <TextArea fx:id="matrizAdyacencia" editable="false"/>
+        </Tab>
+        <Tab text="Lista de Adyacencia">
+            <TextArea fx:id="listaAdyacencia" editable="false"/>
+        </Tab>
+    </TabPane>
+
+    <!-- botones para ordenar, guardar y cargar grafos-->
+    <HBox spacing="10">
+        <Button text="Orden Topológico" onAction="#ordenarTopologicamente"/>
+        <Button text="Guardar Grafo" onAction="#guardarGrafo"/>
+        <Button text="Cargar Grafos" onAction="#cargarGrafos"/>
+    </HBox>
+
+    <!-- y estos son los botones para borrar historial y el grafo actual, ya que ya no me cabia
+     en la parte de arriba, y los movi abajo-->
+    <HBox spacing="10">
+        <Button text="Borrar Historial" onAction="#borrarHistorial"/>
+        <Button text="Borrar Grafo Actual" onAction="#borrarGrafoActual"/>
+    </HBox>
+
+    <!-- este campo label muestra los textos de ordenamiento, o el mensaje de que no se puede hacer el ordenamiento
+     porque ni siquiera es topologico, osea, tiene ciclos-->
+    <Label fx:id="mensajeLabel" text="" style="-fx-text-fill: red;"/>
+</VBox>
